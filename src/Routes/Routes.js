@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import Custom from "../layouts/Custom";
 import Main from "../layouts/Main";
 import Blog from "../pages/Blog/Blog";
 import Faq from "../pages/Faq/Faq";
@@ -6,10 +7,7 @@ import Home from "../pages/Home/Home";
 import Topic from "../pages/Shared/Topic/Topic";
 
 export const router = createBrowserRouter([
-    {
-        path:'/',
-        element: <Home></Home>
-    },
+    
     {
         path:'/courses',
         element: <Main></Main>,
@@ -17,19 +15,26 @@ export const router = createBrowserRouter([
             {
                 path:'/courses/:id',
                 element:<Topic></Topic>
-            },
-            {
-                path:'/topics/:id',
-                element:<Topic></Topic>
             }
         ]
     },
     {
-        path:'/blog',
-        element:<Blog></Blog>
-    },
-    {
-        path:'/faq',
-        element:<Faq></Faq>
+        path:'/',
+        element:<Custom></Custom>,
+        children:[
+            {
+                path:'/',
+                element: <Home></Home>
+            },
+            {
+                path:'/blog',
+                element:<Blog></Blog>
+            },
+            {
+                path:'/faq',
+                element:<Faq></Faq>
+            }
+        ]
     }
+    
 ])
