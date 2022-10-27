@@ -4,6 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
+import Sidebar from "../Sidebar/Sidebar";
 
 const Header = () => {
   return (
@@ -24,13 +25,18 @@ const Header = () => {
             </Link>
           </Nav>
           <Nav>
-            <Link to="#" className="nav-link">
-              More deets
+
+            <Link to="/login" className="nav-link">
+              Login
             </Link>
-            <Link to="#memes" className="nav-link">
-              Dank memes
+            <Link to="/register" className="nav-link">
+              Register
             </Link>
           </Nav>
+          <div className="d-lg-none d-block">
+          <Sidebar></Sidebar>
+          </div>
+          
         </Navbar.Collapse>
       </Container>
     </Navbar>

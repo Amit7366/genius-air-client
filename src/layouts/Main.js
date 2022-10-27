@@ -9,7 +9,7 @@ const Main = () => {
         <div>
             <Header></Header>
             <Container>
-                <Row>
+                <Row className='py-4'>
                     <Col lg='4' className='d-none d-lg-block'>
                         <Sidebar></Sidebar>
                     </Col>

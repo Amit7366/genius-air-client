@@ -1,12 +1,12 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
+import './Details.css';
 
 const Details = () => {
   const topicDetails = useLoaderData();
-  const {id,title,image,details,rating,price,ratings} = topicDetails;
-  console.log(details);
+  const {id,title,image,details,rating,price,ratings,bullet} = topicDetails;
   return (
     <Card >
       <Card.Header>Featured</Card.Header>
@@ -16,7 +16,13 @@ const Details = () => {
         <Card.Text>
           {details}
         </Card.Text>
-        <Button variant="primary">Get Premium Access</Button>
+        <ul>
+          {
+            bullet.map((bullet,idx) => <li key={idx}>{bullet}</li>)
+          }
+          
+        </ul>
+        <Link className="btn btn-outline-success" to={`/courses/checkout/${id}`}>Get Premium Access</Link>
       </Card.Body>
       
     </Card>
