@@ -9,7 +9,7 @@ import { AuthContext } from "../../Context/AuthProvider";
 
 const Register = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
-  const [error,setError] = useState();
+  const [error, setError] = useState();
   const handleRegister = (event) => {
     event.preventDefault();
 
@@ -21,14 +21,26 @@ const Register = () => {
     const password = form.password.value;
     const cpassword = form.cpassword.value;
 
-    if(password.length < 6){
-      setError('Password must be at least 6 character');
-      toast.error('Password must be at least 6 character');
+    if (password.length < 6) {
+      setError("Password must be at least 6 character");
+      toast.error("Password must be at least 6 character");
       return;
     }
-    if(cpassword !== password){
-      setError('Password did not match');
-      toast.error('Password did not match');
+    if (cpassword !== password) {
+      setError("Password did not match");
+      toast.error("Password did not match");
+      return;
+    }
+
+    if (!/(?=.*[A-Z].*[A-Z])/.test(password)) {
+      setError("Please provide at least 2 Uppercase letter");
+      toast.error("Please provide at least 2 Uppercase letter");
+      return;
+    }
+
+    if (!/(?=.*[!@#$&*])/.test(password)) {
+      setError("Password should have special charecter");
+      toast.error("Password should have special charecter");
       return;
     }
 
@@ -60,7 +72,12 @@ const Register = () => {
           <Form onSubmit={handleRegister}>
             <Form.Group className="mb-3">
               <Form.Label>Full Name</Form.Label>
-              <Form.Control name="name" type="text" placeholder="John Doe" required/>
+              <Form.Control
+                name="name"
+                type="text"
+                placeholder="John Doe"
+                required
+              />
             </Form.Group>
 
             <Form.Group className="mb-3">
@@ -101,7 +118,7 @@ const Register = () => {
                 required
               />
             </Form.Group>
-            {error && <p className="text-danger">{error}</p>  }
+            {error && <p className="text-danger">{error}</p>}
             <Button variant="primary" type="submit">
               Register
             </Button>
