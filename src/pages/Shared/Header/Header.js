@@ -48,12 +48,15 @@ const Header = () => {
                     </Tooltip>
                   }
                 >
+                  {user.photoURL ? 
                   <img
-                    style={{ height: "40px",width:'40px' }}
-                    src={user.photoURL ? user.photoURL : ''}
-                    alt=""
-                    className="rounded-circle"
-                  />
+                  style={{ height: "40px",width:'40px' }}
+                  src={user.photoURL}
+                  alt=""
+                  className="rounded-circle"
+                />
+                  : <></>}
+                  
                 </OverlayTrigger>
                 <Button onClick={handleLogout} variant="danger" size="sm" className="ms-2">Logout</Button>
               </>
