@@ -2,15 +2,24 @@ import React, { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { FaUser } from "react-icons/fa";
+import { FaLightbulb, FaRegMoon, FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Context/AuthProvider";
 import Sidebar from "../Sidebar/Sidebar";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { Button } from "react-bootstrap";
+import { useState } from "react";
+import './Header.css';
 const Header = () => {
   const { user,logOut } = useContext(AuthContext);
+  const [theme,setTheme] = useState(false);
+
+  const toggleTheme = () => {
+    // 👇️ passed function to setState
+    setTheme(current => !current);
+
+  };
 
   const handleLogout = () =>{
     logOut()
@@ -18,7 +27,7 @@ const Header = () => {
     .catch(error => console.log(error))
   }
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect expand="lg" bg={theme ? 'light' : 'dark'} variant="dark">
       <Container>
         <Navbar.Brand>
           <Link to="/">Genius Air School</Link>
@@ -37,6 +46,14 @@ const Header = () => {
             </Link>
           </Nav>
           <Nav>
+            <button className="themeBTn" onClick={toggleTheme}>
+              {
+                theme ? 
+                <FaRegMoon className="text-dark"></FaRegMoon>
+                : 
+                <FaLightbulb className="text-white"></FaLightbulb>
+              }
+             </button>
             {user ? (
               <>
                

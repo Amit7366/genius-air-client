@@ -57,12 +57,12 @@ const Login = () => {
           <Form onSubmit={signIn}>
           <Form.Group className="mb-3">
               <Form.Label>Email address</Form.Label>
-              <Form.Control name='email' type="email" placeholder="yourname@domain.com" />
+              <Form.Control name='email' type="email" placeholder="yourname@domain.com" required />
             </Form.Group>
 
             <Form.Group className="mb-3">
               <Form.Label>Password</Form.Label>
-              <Form.Control name='password' type="password" placeholder="******" />
+              <Form.Control name='password' type="password" placeholder="******" required/>
             </Form.Group>
 
             <Button variant="primary" type="submit" className="mb-2">

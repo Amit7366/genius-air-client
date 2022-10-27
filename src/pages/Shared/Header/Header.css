@@ -1,0 +1,8 @@
+.themeBTn{
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+.navbar-expand-lg .navbar-nav .nav-link {
+    color: salmon;
+}

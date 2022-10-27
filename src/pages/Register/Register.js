@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useContext } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 
 const Register = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
-
+  const [error,setError] = useState();
   const handleRegister = (event) => {
     event.preventDefault();
 
@@ -18,6 +19,18 @@ const Register = () => {
     const photoURL = form.photoURL.value;
     const email = form.email.value;
     const password = form.password.value;
+    const cpassword = form.cpassword.value;
+
+    if(password.length < 6){
+      setError('Password must be at least 6 character');
+      toast.error('Password must be at least 6 character');
+      return;
+    }
+    if(cpassword !== password){
+      setError('Password did not match');
+      toast.error('Password did not match');
+      return;
+    }
 
     console.log(name, photoURL, email, password);
 
@@ -47,7 +60,7 @@ const Register = () => {
           <Form onSubmit={handleRegister}>
             <Form.Group className="mb-3">
               <Form.Label>Full Name</Form.Label>
-              <Form.Control name="name" type="text" placeholder="John Doe" />
+              <Form.Control name="name" type="text" placeholder="John Doe" required/>
             </Form.Group>
 
             <Form.Group className="mb-3">
@@ -56,6 +69,7 @@ const Register = () => {
                 name="photoURL"
                 type="text"
                 placeholder="https://xyz.com/abc.jpg"
+                required
               />
             </Form.Group>
 
@@ -65,6 +79,7 @@ const Register = () => {
                 name="email"
                 type="email"
                 placeholder="yourname@domain.com"
+                required
               />
             </Form.Group>
 
@@ -74,9 +89,19 @@ const Register = () => {
                 name="password"
                 type="password"
                 placeholder="******"
+                required
               />
             </Form.Group>
-
+            <Form.Group className="mb-3">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                name="cpassword"
+                type="password"
+                placeholder="******"
+                required
+              />
+            </Form.Group>
+            {error && <p className="text-danger">{error}</p>  }
             <Button variant="primary" type="submit">
               Register
             </Button>
