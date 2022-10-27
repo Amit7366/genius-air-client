@@ -7,7 +7,6 @@ import './Courses.css'
 
 const Courses = () => {
   const topics = useLoaderData();
-  console.log(topics);
   return (
     <Container>
       <Row xs={1} md={2} className="g-4">

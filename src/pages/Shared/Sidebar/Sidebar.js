@@ -12,10 +12,10 @@ const Sidebar = () => {
   }, []);
   return (
     <div>
-      <h2>All Courses : ({courses.length})</h2>
+      <h5>All Courses Category : ({courses.length})</h5>
       <ListGroup>
         {
-            courses.map(course => <ListGroup.Item key={course.id} className="mb-2"><Link>{course.name}</Link></ListGroup.Item>)
+            courses.map(course => <ListGroup.Item key={course.id} className="mb-2"><Link to={`/courses/${course.id}`}>{course.name}</Link></ListGroup.Item>)
         }
         
         
