@@ -21,22 +21,22 @@ export const router = createBrowserRouter([
         children: [
             {
                 path:'/courses',
-                loader:() => fetch('http://localhost:5000/'),
+                loader:() => fetch('https://genius-air-school-server.vercel.app/'),
                 element:<Courses></Courses>
             },
             {
                 path:'/courses/:id',
-                loader: ({params}) => fetch(`http://localhost:5000/courses/${params.id}`),
+                loader: ({params}) => fetch(`https://genius-air-school-server.vercel.app/courses/${params.id}`),
                 element:<Topic></Topic>
             },
             {
                 path:'/courses/topics/:id',
-                loader: ({params}) => fetch(`http://localhost:5000/topics/${params.id}`),
+                loader: ({params}) => fetch(`https://genius-air-school-server.vercel.app/topics/${params.id}`),
                 element:<Details></Details>
             },
             {
                 path:'/courses/checkout/:id',
-                loader: ({params}) => fetch(`http://localhost:5000/topics/${params.id}`),
+                loader: ({params}) => fetch(`https://genius-air-school-server.vercel.app/topics/${params.id}`),
                 element: <PrivateRoutes><Checkout></Checkout></PrivateRoutes>
             }
         ]
