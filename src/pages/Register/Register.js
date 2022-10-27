@@ -1,15 +1,39 @@
 import React from 'react';
+import { useContext } from 'react';
 import { Col, Container, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthProvider';
 
 const Register = () => {
+  const {createUser} = useContext(AuthContext);
+
+    const handleRegister = (event) =>{
+      event.preventDefault();
+
+      const form = event.target;
+
+      const name = form.name.value;
+      const photoURL = form.photoURL.value;
+      const email = form.email.value;
+      const password = form.password.value;
+
+      console.log(name,photoURL,email,password);
+
+      createUser(email,password)
+      .then(result => console.log(result.user))
+      .then(error => console.log(error))
+
+      form.reset();
+
+    }
     return (
         <Container>
       <Row>
         <Col md="6" className="mx-auto card p-4">
             <h3>Register</h3>
-          <Form>
+          <Form onSubmit={handleRegister}>
             <Form.Group className="mb-3">
               <Form.Label>Full Name</Form.Label>
               <Form.Control name='name' type="text" placeholder="John Doe" />
@@ -33,6 +57,7 @@ const Register = () => {
             <Button variant="primary" type="submit">
               Register
             </Button>
+            <Link to='/login'>Login</Link>
           </Form>
         </Col>
       </Row>
