@@ -3,6 +3,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
 
@@ -32,6 +33,8 @@ const Header = () => {
             <Link to="/register" className="nav-link">
               Register
             </Link>
+            <button> <FaGoogle></FaGoogle> </button>
+            <button> <FaGithub></FaGithub> </button>
           </Nav>
           <div className="d-lg-none d-block">
           <Sidebar></Sidebar>
