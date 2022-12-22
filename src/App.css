@@ -39,3 +39,11 @@
 a,a:hover{
   text-decoration: none !important;
 }
+
+.primary-color{
+  color: salmon;
+}
+.custom-icons{
+  font-size: 30px;
+  color: salmon;
+}

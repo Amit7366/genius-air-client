@@ -27,10 +27,10 @@ const Header = () => {
     .catch(error => console.log(error))
   }
   return (
-    <Navbar collapseOnSelect expand="lg" bg={theme ? 'light' : 'dark'} variant="dark">
-      <Container>
+    <Navbar className="container" collapseOnSelect expand="lg" bg={theme ? 'dark' : 'white'} >
+      <Container className="p-0">
         <Navbar.Brand>
-          <Link to="/">Genius Air School</Link>
+          <Link to="/" className="primary-color font-weight-bold">Genius Air School</Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -49,9 +49,10 @@ const Header = () => {
             <button className="themeBTn" onClick={toggleTheme}>
               {
                 theme ? 
-                <FaRegMoon className="text-dark"></FaRegMoon>
-                : 
+                
                 <FaLightbulb className="text-white"></FaLightbulb>
+                : 
+                <FaRegMoon className="text-dark"></FaRegMoon>
               }
              </button>
             {user ? (
